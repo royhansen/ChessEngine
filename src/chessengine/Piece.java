@@ -1,0 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chessengine;
+
+/**
+ *
+ * @author rh41776
+ */
+class Piece {
+
+    private int player;
+
+    Piece(int player) {
+        this.player = player;
+    }
+
+    Piece() {
+         this(1);
+    }
+
+    int getPlayer() {
+        return this.player;
+    }
+    
+}
