@@ -38,12 +38,14 @@ public class BoardTest {
         assertNotNull("Board creation", board);
     }
     
-     @Test
+    @Test
     public void getBoardArrayCreatedReturns8x8Array() {
         Board board = new Board();
-        int[][] expected = new int[8][8];
-        int[][] actual = board.getBoard();
+        Square[][] expected = new Square[8][8];
+        Square[][] actual = board.getBoard();
         assertArrayEquals("New Board Array", expected, actual);
     }
+    
+    
     
 }
