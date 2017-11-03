@@ -10,31 +10,47 @@ public class Board {
     
         public Board(){
             this.board = new Square[8][8];
+            //TODO: Offload into own method later and add squares of different colors
+            for (int row = 0; row < board.length; row++){
+                for (int col = 0; col < board[0].length; col++){
+                    board[row][col] = new Square();
+                }
+            } 
+           
+            
         }
         
         Square[][] getBoard() {
             return this.board;
         }
         
-    @Override
+        @Override
         public String toString(){
+            String str = "";
             for (int row = 0; row < board.length; row++){
                 for (int col = 0; col < board[0].length; col++){
-                    System.out.print("X");
+                    if (board[row][col].hasPiece()){
+                        str += "P";
+                    } else {
+                        str += "X"; 
+                    }
                 }
-                System.out.println("");
+                str += "\n";
             } 
-            return "test";
+            return str;
         }
         
-        public String printBoardPositions(){
+        public void printBoardPositions(){
             for (int row = 0; row < board.length; row++){
                 for (int col = 0; col < board[0].length; col++){
                     System.out.print(col + "," + row + " ");
                 }
                 System.out.println("");
             } 
-            return "test";
         }
+        
+        public Square getSquareAt(int row, int col) {
+            return board[row][col];
+    }
     
 }

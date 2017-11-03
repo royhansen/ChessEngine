@@ -30,6 +30,7 @@ public class BoardTest {
     
     @After
     public void tearDown() {
+        Square.count = 0; //zero square counter for each test;
     }
 
     @Test
@@ -39,13 +40,25 @@ public class BoardTest {
     }
     
     @Test
-    public void getBoardArrayCreatedReturns8x8Array() {
+    public void getBoardCreates8Rows8Columns() {
         Board board = new Board();
-        Square[][] expected = new Square[8][8];
-        Square[][] actual = board.getBoard();
-        assertArrayEquals("New Board Array", expected, actual);
+        //rows
+        int expectedrows = 8;
+        int actualrows = board.getBoard().length;
+        assertEquals("New Board Row Size", expectedrows, actualrows);
+        //columns
+        int expectedcolumns = 8;
+        int actualcolumns = board.getBoard()[0].length;
+        assertEquals("New Board Columns Size", expectedcolumns, actualcolumns);
     }
     
-    
+    @Test
+    public void getSquareAtZeroReturnsSquareIDZero() {
+        Board board = new Board();
+        Square square = board.getSquareAt(0,0);
+        int expected = 1;
+        int actual = square.getID();
+        assertEquals("Get Square Returns correct square by ID", expected, actual);
+    }
     
 }

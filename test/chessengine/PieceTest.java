@@ -40,9 +40,12 @@ public class PieceTest {
     
     @Test
     public void pieceGetPlayerReturnsOne() {
-        Piece piece = new Piece(1);
+        Piece piece = new Piece();
         int expected = 1;
         int actual = piece.getPlayer();
         assertEquals(expected, actual);
     }
+
+    
+    
 }

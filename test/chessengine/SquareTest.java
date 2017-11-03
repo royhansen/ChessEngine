@@ -30,6 +30,7 @@ public class SquareTest {
     
     @After
     public void tearDown() {
+        Square.count = 0; //reset global square count between each test
     }
 
     @Test
@@ -38,4 +39,45 @@ public class SquareTest {
         assertNotNull("Square object created", square);
     }
     
+    @Test
+    public void getSquareFirstIdReturnsOne(){
+        Square square = new Square();
+        int expected = 1;
+        int actual = square.getID();
+        assertEquals(expected, actual);       
+    }
+    
+    @Test
+    public void getSquareTwoIdReturnsTwo(){
+        Square square0 = new Square();
+        Square square1 = new Square();
+        int expected = 2;
+        int actual = square1.getID();
+        assertEquals(expected, actual);       
+    }
+    
+    @Test
+    public void emptySquareHasPieceReturnsFalse() {
+        Square square = new Square();
+        assertFalse("New Empty Square Shouldn't Have Piece", square.hasPiece());
+    }
+    
+    @Test
+    public void hasPieceReturnsTrueIfPieceAddedOrFalseIfRemoved() {
+        Square square = new Square();
+        Piece p = new Piece();
+        square.addPiece(p);
+        assertTrue("New Empty Square Shouldn't Have Piece", square.hasPiece());
+        square.removePiece(p);
+        assertFalse("Piece Removed - Should return false",square.hasPiece()); 
+    }
+    
+    @Test
+    public void addPiecePawnReturnPawnType() {
+        Square square = new Square();
+        Piece p = new Piece();
+        //PieceType actual = square.addPiece(p);
+        //assertEquals("Pawn Added", PieceType.PAWN, );
+    }
+ 
 }
